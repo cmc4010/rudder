@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0; 
+            padding: 0;
+        }
+        .backgroundImage { 
+            background-image: url("img/background/background.png");
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .secondLayer {
+            position: absolute;
+            left: 10%;
+            top: 10%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 10px solid rgba(255, 255, 255, .5);
+            width: 80%;
+            height: 80%;
+        }
+        .titleP {
+            text-align: center;
+        }
+        .copyRightP {
+            position: absolute;
+            text-align: left;
+            bottom: 0;
+            left: 5px;
+            color: rgba(255, 255, 255, .5);
+
+        }
+        .teamP {
+            position: absolute;
+            text-align: right;
+            bottom: 0;
+            right: 5px;
+            color: rgba(255, 255, 255, .5);
+
+        }
+        .rudder {
+            width: 30%;
+            height: auto;
+            top: 10%;
+            left: 35%;
+            position: absolute;
+        }
+        #auth-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCVZ4YBjsOkqKU0ULu5ctrhEzwvSpz-beU",
+        authDomain: "fir-auth-b65bf.firebaseapp.com",
+        databaseURL: "https://fir-auth-b65bf.firebaseio.com",
+        projectId: "fir-auth-b65bf",
+        storageBucket: "fir-auth-b65bf.appspot.com",
+        messagingSenderId: "850582013463"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: 'http://localhost:5000',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID
+          // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          // firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          // firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>'
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+</head>
+<body>
+    <div class="backgroundImage">
+        <div class="secondLayer">
+            <p class="titleP"> ＲＵＤＤＥＲ </p>
+            <img src="img/rudder/rudder3.png" class="rudder" >
+            <div id="auth-container">
+                <div id="firebaseui-auth-container"></div>
+            </div>
+            <p class="copyRightP">版權說明</p>
+            <p class="teamP">製作團隊</p>
+        </div>
+    </div>
+</body>
+</html>
